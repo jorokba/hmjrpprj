@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- '.'은 class를 나타내준다. aside.h1 => aside tag면서 h1 클래스 
+#은 아이디. 문서내 같은 아이디가 있으면 아니된다.--> 
+<style>
+ h1,nav{ 
+  font-weight: bold;
+  color: pink;
+  text-decoration: underline;
+ }
+
+ li.aa{ 
+  color: blue;
+  
+ }
+ input{
+  border: 10px;
+ }
+</style>
+
+</head>
+<body>
+<header> <!-- 다른사이트를 가거나 연결해주는  -->
+<h1>notepubs</h1>
+ 
+ <section>
+ <h1 class ="aa">헤더</h1>
+  
+  <nav>
+  <h1>검색메뉴</h1>
+  <ul>
+   <li class = "aa">햄버거 버튼</li>
+   <li class = "aa">돋보기</li>
+  </ul>
+  </nav>
+  
+  <section>
+   <h1> 노트 제목</h1>
+   <div>
+    <p>편하게 읽는 자바 프로그래밍</p>
+    <p></img></p>
+    <p>answeris</p>
+   </div>
+  </section>
+ 
+
+<!-- 분류
+전체보기
+책소개
+1부 컴퓨터 프로그래밍
+-1장 컴퓨터 프로그래밍 시작..
+-2장 컴퓨터 프로그래밍 하기 -->
+
+ <nav>
+ <h1>관리도구</h1>
+  <ul>
+   <li>글쓰기</li>
+   <li>방명록</li>
+   <li>RSS</li>
+   <li>관리</li>
+  </ul>
+  </nav>
+</section>
+</header>
+<!-- <aside>햄버거 버튼 눌렀을 때 나오는 부분
+
+Notice
+Recent Posts
+2부/5장/6.제어구조를
+2부/5장/5. 메뉴를 구
+RecentComments
+Link
+2016/10
+일 월 화 수 목 금 토
+      1
+2 3 4 5 6 7 8
+9 ...
+Tags
+more
+Archives
+2016/10(26)
+2019/09(55)
+Today 35
+Total 514     
+</aside> -->
+<!--------------------------------------------->
+<main> <!-- 메인이 있으면 header와 footer -->
+<h2>블로그 목록</h2><!-- ul 을 묶는 제목 -->
+ <ul>
+ 
+  <li> <!-- 목록이다 -->
+   <h3>2부/5장/개요</h3>
+   <p>앞장에서는</p> <!-- 한줄(문단)일때 p p가 여러개는 div로 감싸기 -->
+   <div>2부 절차적인 자바 프로그래밍/5장 실행흐름 제어하기</div>
+   <div>2016.10.10 01.26</div>
+  </li>
+
+ 
+ <li>
+  <h3>2부 4장 16.연산자 우선순위</h3>
+  <p>연산자 우선순위는 여러 연산자들이...</p>
+  <div>2부 절차적인 자바 프로그래밍/4장 값과 연산자</div>
+  <div>2016.10.08.22.47</div>
+ </li>
+ 
+ </ul>
+</main>
+
+<footer> 
+ <div>
+  Blog is powered by kakao / Designed by Tistory
+ </div>
+</footer>
+
+</body>
+</html>

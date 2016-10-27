@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newlec.web.dao.NoticeDao">
+ 	<select id="get" resultType="com.newlec.web.entities.Notice">
+ 	 	SELECT * FROM NOTICES WHERE CODE =#{code}; 
+ 	</select>
+ 	
+	<select id="getList" resultType="com.newlec.web.model.NoticeModel">
+		SELECT * FROM (
+		select ROW_NUMBER() OVER (ORDER BY REGDATE DESC) NUM,
+    	NOTICES_VIEW.*
+    	from notices_VIEW
+    	WHERE ${param2} LIKE '%${param3}%'
+    	) N
+    	WHERE NUM BETWEEN 1+(#{param1}-1)*10 AND #{param1}*10
+	</select>
+	
+	<update id="update" parameterType="com.newlec.web.entities.Notice">
+		UPDATE NOTICES SET TITLE=#{title}, CONTENT=#{content} WHERE CODE=#{code}
+	</update>
+	
+	<delete id = "delete">
+  		DELETE NOTICES WHERE CODE = #{code};
+ 	</delete>
+
+
+ 	<insert id = "insert" parameterType="com.newlec.web.entities.Notice">
+  		<selectKey order="BEFORE" keyProperty="code" resultType="String"><!-- 쿼리 실행하기 전 미리 이것 실행해줘 -->
+   			SELECT ISNULL(MAX(CAST(CODE AS INT)), 0)+1  AS CODE FROM NOTICES <!--CODE값이 STRING 이라서 INT값으로 변환해서 가장 큰 값을 찾아줘  근데 만약 NULL이면 1로 보여줘 ,
+  			 NULL이 아니면 +1을 해서 보여줘-->
+  		</selectKey>
+  		INSERT INTO NOTICES (CODE,TITLE,WRITER,CONTENT) VALUES(#{code},#{title},#{writer},#{content});
+ 	</insert>
+
+	<select id="getCount" resultType="Integer">
+		SELECT COUNT(*) COUNT FROM( select ROW_NUMBER() OVER (ORDER BY REGDATE DESC) NUM,
+		NOTICES_VIEW.* from notices_VIEW
+		WHERE TITLE LIKE '%%') N
+	</select>
+	
+	<select id="getLastCode" resultType="String">
+		SELECT ISNULL(MAX(CAST(CODE AS INT)), 0) AS CODE FROM NOTICES
+	</select>
+</mapper>
