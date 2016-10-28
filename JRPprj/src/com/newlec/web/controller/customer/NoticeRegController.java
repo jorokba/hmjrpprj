@@ -1,4 +1,4 @@
-package com.newlec.web.dao.controller;
+package com.newlec.web.controller.customer;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -58,14 +58,16 @@ public class NoticeRegController extends HttpServlet {
 		/*String fname = req.getFilesystemName("file");*/
 		
 		NoticeFileDao noticeFileDao = new MyBatisNoticeFileDao();  //요기
+		int cnt=0; //???????
 		
 		while(en.hasMoreElements()){
-		NoticeFile nf = new NoticeFile();
-		String name = (String)en.nextElement();
-		String fname = req.getFilesystemName(name);
-		nf.setSrc(fname);
-		nf.setNoticeCode(lastCode);
-		noticeFileDao.insert(nf);  //요기
+			NoticeFile nf = new NoticeFile();
+			String name = (String)en.nextElement();
+			String fname = req.getFilesystemName(name);
+			nf.setSrc(fname);
+			nf.setNoticeCode(lastCode);
+			noticeFileDao.insert(nf);
+			cnt++;//?????
 		}
 		
 		response.sendRedirect("notice");

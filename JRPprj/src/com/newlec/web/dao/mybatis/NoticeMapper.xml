@@ -16,7 +16,7 @@
 	</select>
 	
 	<update id="update" parameterType="com.newlec.web.entities.Notice">
-		UPDATE NOTICES SET TITLE=#{title}, CONTENT=#{content} WHERE CODE=#{code}
+		UPDATE NOTICES SET TITLE=#{title}, CONTENT=#{content} WHERE CODE=#{code};
 	</update>
 	
 	<delete id = "delete">

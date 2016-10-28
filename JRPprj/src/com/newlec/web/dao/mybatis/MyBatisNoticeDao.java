@@ -101,6 +101,4 @@ public class MyBatisNoticeDao implements NoticeDao{
 		session.close();
 		return code;
 	}
-	
-	
 }

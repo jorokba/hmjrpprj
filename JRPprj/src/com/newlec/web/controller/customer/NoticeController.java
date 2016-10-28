@@ -1,4 +1,4 @@
-package com.newlec.web.dao.controller;
+package com.newlec.web.controller.customer;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newlec.web.dao.NoticeFileDao">
-	<select id="getList" resultType="com.newlec.web.entities.Notice">
-		SELECT * FROM NOTICEFILES WHERE NOTICECODE = #{noticeCode}; 
+	<select id="getList" resultType="com.newlec.web.entities.NoticeFile">
+		SELECT * FROM NOTICEFILES WHERE NOTICECODE = #{noticeCode} 
 	</select>
 	
 	<update id="update" parameterType="com.newlec.web.entities.Notice">
@@ -10,7 +10,7 @@
 	</update>
 	
 	<delete id = "delete">
-  		DELETE NOTICEFILES WHERE CODE = #{code};
+  		DELETE NOTICEFILES WHERE CODE = #{code}
  	</delete>
 
 
@@ -19,6 +19,6 @@
    			SELECT ISNULL(MAX(CAST(CODE AS INT)), 0)+1  AS CODE FROM NOTICEFILES <!--CODE값이 STRING 이라서 INT값으로 변환해서 가장 큰 값을 찾아줘  근데 만약 NULL이면 1로 보여줘 ,
   			 NULL이 아니면 +1을 해서 보여줘-->
   		</selectKey>
-  		INSERT INTO NOTICEFILES (CODE, SRC, NOTICECODE) VALUES(#{code}, #{src}, #{noticeCode});
+  		INSERT INTO NOTICEFILES (CODE, SRC, NOTICECODE) VALUES(#{code}, #{src}, #{noticeCode})
  	</insert>
 </mapper>

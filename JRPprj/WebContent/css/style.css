@@ -49,6 +49,7 @@ body.clearfix {
 
 #search-form{
 	border: 5px solid  #8cba34;
+	display: inline-block;
 }
 
 #search-form  h1,
@@ -56,11 +57,38 @@ body.clearfix {
 	display: none;
 }
 
+#search-form label {
+	font-family:"돋움";
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 25px;
+	color: #979797;
+	height: 25px;
+	float: left;
+	display: block;
+	
+	background: #ffffff;
+	padding-left: 5px;
+	padding-right: 5px; 
+}
+
+#search-form input[value="kor eng"]{
+	height: 25px;
+	border: 0px;
+	display: block;
+	float: left;
+	text-indent: 5px;
+}
+
 #search-form input[type=submit]{
-	width:31px;
-	height:25px;
-	border:0px;
-	background: url("../images/btn-zoom.png") no-repeat 0px center;	
+	width: 31px;
+	height: 25px;
+	border: 0px;
+	background: blue url("../images/btn-zoom.png") no-repeat 0px center;	
+	vertical-align: middle;
+	float: left;
+	display: block;
+	border-left: 1px solid #8cba34;
 }
 
 #member-menu > h1{

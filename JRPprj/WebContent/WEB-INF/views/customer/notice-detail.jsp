@@ -8,7 +8,7 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +35,13 @@
 			</tr>
 			<tr>
 				<td>첨부파일</td>
-				<td colspan="3"></td>
+				<td colspan="3">
+					<c:forEach var="f" items="${files}" varStatus="s"> 
+						<a href="../download?f="${f.src}">${f.src}</a>
+						<c:if test="${!s.last}">,</c:if>	
+						<%-- index : ${s.index} / count : ${s.count} / ${s.first}/${s.last} <br/><!--count 개수. 몇번 반복되었을까.  --> --%>						
+					</c:forEach>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="4">${n.content}</td>
@@ -49,3 +55,6 @@
 	</div>
 </body>
 </html>
+						
+
+						 
