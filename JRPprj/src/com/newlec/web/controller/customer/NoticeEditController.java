@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tiles.TilesContainer;
+import org.apache.tiles.access.TilesAccess;
+
 import com.newlec.web.dao.NoticeDao;
 import com.newlec.web.dao.mybatis.MyBatisNoticeDao;
 import com.newlec.web.entities.Notice;
 
 
 @SuppressWarnings("serial")
-@WebServlet("/customer/notice-edit") //Áö±Ý ³ª´Â ¾ê°¡ °¡»óÀÌÁö¸¸ °°Àº µð·ºÅä¸®¾È¿¡ ÀÖ´Â °Í Ã³·³ º¸ÀÌ°Ô ÇÒ°Å¾ß!
+@WebServlet("/customer/notice-edit") //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ê°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸®ï¿½È¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ò°Å¾ï¿½!
 public class NoticeEditController extends HttpServlet{
 	
 	@Override
@@ -45,6 +48,9 @@ public class NoticeEditController extends HttpServlet{
 
 		request.setAttribute("n", notice);
 
-		request.getRequestDispatcher("/WEB-INF/views/customer/notice-edit.jsp").forward(request, response);
+		TilesContainer container = TilesAccess.getContainer(request.getSession().getServletContext());
+	    container.render("customer.notice-edit", request, response);
+	    container.endContext(request, response);	
+		/*request.getRequestDispatcher("/WEB-INF/views/customer/notice-edit.jsp").forward(request, response);*/
 	}
 }

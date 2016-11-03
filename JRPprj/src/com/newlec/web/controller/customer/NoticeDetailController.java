@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tiles.TilesContainer;
+import org.apache.tiles.access.TilesAccess;
+
 import com.newlec.web.dao.NoticeDao;
 import com.newlec.web.dao.NoticeFileDao;
 import com.newlec.web.dao.mybatis.MyBatisNoticeDao;
@@ -17,7 +20,7 @@ import com.newlec.web.entities.Notice;
 import com.newlec.web.entities.NoticeFile;
 
 @SuppressWarnings("serial")
-@WebServlet("/customer/notice-detail") //Áö±Ý ³ª´Â ¾ê°¡ °¡»óÀÌÁö¸¸ °°Àº µð·ºÅä¸®¾È¿¡ ÀÖ´Â °Í Ã³·³ º¸ÀÌ°Ô ÇÒ°Å¾ß!
+@WebServlet("/customer/notice-detail") //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ê°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸®ï¿½È¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ò°Å¾ï¿½!
 public class NoticeDetailController extends HttpServlet{
 
 	@Override
@@ -29,15 +32,29 @@ public class NoticeDetailController extends HttpServlet{
 		NoticeFileDao noticeFileDao = new MyBatisNoticeFileDao();
 		
 		Notice notice;
-		List<NoticeFile> noticeFiles; //ÆÄÀÏ ¿©·¯°³ ¿Ã¸±²¨´Ï±î?
+		Notice prev;
+		Notice next;
+		
+		noticeDao.hitUp(_code);
+		List<NoticeFile> noticeFiles; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½Ï±ï¿½?
 		
 		notice = noticeDao.get(_code);
+		prev = noticeDao.getPrev(_code);
+		next = noticeDao.getNext(_code);
 		noticeFiles = noticeFileDao.getList(_code);
 		
-		
 		request.setAttribute("n", notice);
+		request.setAttribute("prev", prev);
+		request.setAttribute("next", next);
 		request.setAttribute("files", noticeFiles);
 
-		request.getRequestDispatcher("/WEB-INF/views/customer/notice-detail.jsp").forward(request, response);
+		/*TilesContainer container = TilesAccess.getContainer(
+		        request.getSession().getServletContext());
+		container.render("customer.notice-detail", request, response);*/
+		
+		TilesContainer container = TilesAccess.getContainer(request.getSession().getServletContext());
+	      container.render("customer.notice-detail", request, response);
+	      container.endContext(request, response);
+		/*request.getRequestDispatcher("/WEB-INF/views/customer/notice-detail.jsp").forward(request, response);*/
 	}
 }

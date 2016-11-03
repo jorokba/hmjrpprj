@@ -1,11 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="n" uri="http://www.newlecture.com/jsp/tags/control"%>
+    <%@taglib prefix="n" uri="http://www.newlecture.com/jsp/tags/control"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="s" tagdir="/WEB-INF/tags" %>
-		<main>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공지사항 목록</title>
+
+<link href="../css/reset.css" type="text/css" rel="stylesheet" />
+<link href="../css/style.css?ver=789" type="text/css" rel="stylesheet" />
+<link href="css/notice.css" type="text/css" rel="stylesheet" />
+<script src="../js/modernizr-custom.js"></script>
+</head>
+<body>
+	<!------------------ <header> -------------------->
+ 		<jsp:include page="../inc/header.jsp" />
+      <!---------------- <visual> -------------------->
+		<jsp:include page="inc/visual.jsp" />
+      <!----------------- <body> --------------------->
+      <div id="body">
+      	<div class="content-container clearfix">	
+
+      <!---------------- aside --------------->
+	     <jsp:include page="inc/aside.jsp" />
+      <!----------------------- main ----------------------->
+	      <main>
 		      <h2>공지사항</h2>
 		
 		      <div id="breadlet">
@@ -59,8 +83,6 @@
 		            </tbody>
 		         </table>
 		      </div>
-		      
-		      <div><a href="notice-reg?code=${n.code}">글쓰기</a></div>
 		
 		     	 범용적인 도구
 		      <div>
@@ -71,5 +93,12 @@
 		      <div>
 		         <h3>페이지</h3>
 					<s:pager />
+		
 		      </div>
 	      </main>
+   		</div>
+   	</div>
+   <!-------------------- footer --------------------->
+	  <jsp:include page="../inc/footer.jsp" />
+</body>
+</html>

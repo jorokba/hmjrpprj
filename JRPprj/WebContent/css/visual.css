@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+#visual{
+   height: 171px;  
+   border-top:3px solid #8CBA34;
+   background: #313131 url("../../images/bg-visual.png") no-repeat center;
+   /* no-repeat center을 주지 않으면 pattern으로 인식한다 */
+   background-size:100px 50px;
+}

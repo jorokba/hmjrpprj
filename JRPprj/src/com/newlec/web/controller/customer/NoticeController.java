@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tiles.TilesContainer;
+import org.apache.tiles.access.TilesAccess;
+
 import com.newlec.web.dao.NoticeDao;
 import com.newlec.web.dao.mybatis.MyBatisNoticeDao;
 import com.newlec.web.model.NoticeModel;
@@ -29,13 +32,14 @@ public class NoticeController extends HttpServlet{
 		String field = "TITLE";
 		String query = "";
 		
-		if(t != null && !t.equals(""))//빈 문자열도 안된다.
+		if(t != null && !t.equals(""))
 			field = t;
+		
 		
 		if(q != null)
 			query = q;
 		
-		//if(p != null && !p.equals("")) p가 빈 문자열을 받을 일이 있나??
+		//if(p != null && !p.equals(""))
 		if(p != null)
 			page = Integer.parseInt(p);
 		
@@ -45,7 +49,10 @@ public class NoticeController extends HttpServlet{
 		
 		request.setAttribute("list", list);
 		request.setAttribute("count", count);
-
-		request.getRequestDispatcher("/WEB-INF/views/customer/notice.jsp").forward(request, response);
+		
+		TilesContainer container = TilesAccess.getContainer(request.getSession().getServletContext());
+	      container.render("customer.notice", request, response);
+	      container.endContext(request, response);
+		/*request.getRequestDispatcher("/WEB-INF/views/customer/notice.jsp").forward(request, response);*/
 	}
 }

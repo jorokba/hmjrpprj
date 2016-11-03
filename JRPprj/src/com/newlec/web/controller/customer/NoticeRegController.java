@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tiles.TilesContainer;
+import org.apache.tiles.access.TilesAccess;
+
 import com.newlec.web.dao.NoticeDao;
 import com.newlec.web.dao.NoticeFileDao;
 import com.newlec.web.dao.mybatis.MyBatisNoticeDao;
@@ -25,7 +28,11 @@ public class NoticeRegController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		request.getRequestDispatcher("/WEB-INF/views/customer/notice-reg.jsp").forward(request, response); //forward- ÀÌ¾î¼­ »ç¿ëÇÏ°Ú´Ù.
+		TilesContainer container = TilesAccess.getContainer(request.getSession().getServletContext());
+	    container.render("customer.notice-reg", request, response);
+	    container.endContext(request, response);
+		
+		/*request.getRequestDispatcher("/WEB-INF/views/customer/notice-reg.jsp").forward(request, response);*/ //forward- ï¿½Ì¾î¼­ ï¿½ï¿½ï¿½ï¿½Ï°Ú´ï¿½.
 	}
 
 	@Override
@@ -37,7 +44,7 @@ public class NoticeRegController extends HttpServlet {
 	
 		MultipartRequest req = new MultipartRequest(request, path, 1024*1024*100, "UTF-8", new DefaultFileRenamePolicy());
 		
-		/*request.setCharacterEncoding("UTF-8");	//ÇÑ±Û·Î µî·ÏÀÌ °¡´ÉÇÏ°Ô */
+		/*request.setCharacterEncoding("UTF-8");	//ï¿½Ñ±Û·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ */
 		
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
@@ -57,7 +64,7 @@ public class NoticeRegController extends HttpServlet {
 		
 		/*String fname = req.getFilesystemName("file");*/
 		
-		NoticeFileDao noticeFileDao = new MyBatisNoticeFileDao();  //¿ä±â
+		NoticeFileDao noticeFileDao = new MyBatisNoticeFileDao();  //ï¿½ï¿½ï¿½
 		int cnt=0; //???????
 		
 		while(en.hasMoreElements()){

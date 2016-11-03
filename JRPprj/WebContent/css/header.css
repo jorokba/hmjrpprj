@@ -1,0 +1,156 @@
+@CHARSET "UTF-8";
+
+/*<level 1>*/
+#header{
+   height:70px;
+}
+
+#header  section > h1 {
+	display: none;
+}
+#header .content-container{
+	position: relative;
+}
+
+#logo{
+	position: absolute;
+	left: 0px;
+	top: 23px;
+}
+
+#main-menu{
+	font-family:"맑은 고딕";
+	font-weight: bold;
+	font-size: 15px;
+	display: inline-block;
+	position: absolute;
+	left: 200px;
+	top: 23px;
+}
+
+#main-menu a:hover{
+	color: #ffa000;
+	text-decoration: underline;
+}
+
+#main-menu > h1{
+	display: none; 
+}
+
+#main-menu > ul{
+	overflow: auto;
+}
+
+#main-menu > ul > li:first-child { /* li:first-child+li - 첫번째 자식의 바로 다음 동생의 li */
+ 	padding-left: 0px;
+ 	background: none;
+}
+
+#main-menu > ul > li {
+ 	float: left;
+ 	padding-left: 24px;
+ 	background: url("../../images/bg-main-menu-vsp.png") no-repeat 13px center;
+}
+
+#search-form{
+	border: 5px solid  #8cba34;
+	display: inline-block;
+	
+	position: absolute;
+	left: 468px;
+	top: 21px;
+}
+
+#search-form  h1,
+#search-form  legend{
+	display: none;
+}
+
+#search-form label {
+	font-family:"돋움";
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 25px;
+	color: #979797;
+	height: 25px;
+	float: left;
+	display: block;
+	
+	background: #ffffff;
+	padding-left: 5px;
+	padding-right: 5px; 
+}
+
+#search-form input[value="kor eng"]{
+	height: 25px;
+	border: 0px;
+	display: block;
+	float: left;
+	text-indent: 5px;
+}
+
+#search-form input[type=submit]{
+	width: 31px;
+	height: 25px;
+	border: 0px;
+	background: url("../../images/btn-zoom.png") no-repeat 0px center;	
+	vertical-align: middle;
+	float: left;
+	display: block;
+	border-left: 1px solid #8cba34;
+}
+
+#member-menu > h1{
+	display: none;
+}
+
+#member-menu{
+	font-family:"맑은 고딕";
+	font-weight: bold;
+	font-size: 10px;
+	
+	display: inline-block;
+	
+	position: absolute;
+	right: 0px;
+	top: 20px;
+}
+
+#member-menu > ul {
+	overflow: auto;
+}
+
+#member-menu a {
+	color: #979797;
+	text-decoration: none;
+}
+
+#member-menu a:hover{
+	color: #ffa000;
+	text-decoration: underline;
+}
+
+#member-menu > ul > li {
+	float: left;
+	padding-left: 9px;
+	background: url("../../images/bg-member-menu-sp.png") no-repeat 5px center;
+}
+
+#member-menu > ul > li:first-child { /* li:first-child+li - 첫번째 자식의 바로 다음 동생의 li */
+ 	padding-left: 0px;
+ 	background: none;
+}
+
+#custom-menu {
+	position: absolute;
+	right: 0px;
+	top: 40px;
+}
+
+#custom-menu > h1 {
+	display: none;
+}
+
+#custom-menu > ul > li{
+	float: left;
+}

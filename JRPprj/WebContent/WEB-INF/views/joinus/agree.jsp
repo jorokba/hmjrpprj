@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form action="agree" method="post">
+		<div>
+			<input type="checkbox" name="agree" value="true"/> 약관에 동의합니다.
+		</div>
+		<div>
+			<input type="submit" value="다음"/>
+		</div>
+	</form>
 </body>
 </html>

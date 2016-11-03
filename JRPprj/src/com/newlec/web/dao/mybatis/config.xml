@@ -6,7 +6,7 @@
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
 				<property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-				<property name="url" value="jdbc:sqlserver://jsp.newlecture.com:1433;databaseName=newlecture3" />
+				<property name="url" value="jdbc:sqlserver://dev.newlecture.com:1433;databaseName=newlecture3" />
 				<property name="username" value="jsp" />
 				<property name="password" value="dclass" />
 			</dataSource>

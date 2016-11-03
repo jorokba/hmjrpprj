@@ -15,5 +15,8 @@ public interface NoticeDao {
 	int update(Notice notice);
 	int delete(String code);
 	int getCount(String field, String query);
+	int hitUp(String code);
+	Notice getPrev(String code);
+	Notice getNext(String code);
 	String getlastCode();
 }

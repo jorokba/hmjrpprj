@@ -2,7 +2,7 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newlec.web.dao.NoticeDao">
  	<select id="get" resultType="com.newlec.web.entities.Notice">
- 	 	SELECT * FROM NOTICES WHERE CODE =#{code}; 
+ 	 	SELECT * FROM NOTICES WHERE CODE =#{code}
  	</select>
  	
 	<select id="getList" resultType="com.newlec.web.model.NoticeModel">
@@ -16,11 +16,11 @@
 	</select>
 	
 	<update id="update" parameterType="com.newlec.web.entities.Notice">
-		UPDATE NOTICES SET TITLE=#{title}, CONTENT=#{content} WHERE CODE=#{code};
+		UPDATE NOTICES SET TITLE=#{title}, CONTENT=#{content} WHERE CODE=#{code}
 	</update>
 	
 	<delete id = "delete">
-  		DELETE NOTICES WHERE CODE = #{code};
+  		DELETE NOTICES WHERE CODE=#{code}
  	</delete>
 
 
@@ -38,7 +38,19 @@
 		WHERE TITLE LIKE '%%') N
 	</select>
 	
-	<select id="getLastCode" resultType="String">
+	<select id="getlastCode" resultType="String">
 		SELECT ISNULL(MAX(CAST(CODE AS INT)), 0) AS CODE FROM NOTICES
 	</select>
+	
+	<select id="getPrev" resultType="com.newlec.web.entities.Notice">
+		SELECT TOP 1 * FROM NOTICES WHERE CODE &gt; CAST(#{code} AS INT) ORDER BY REGDATE ASC
+	</select>
+	
+	<select id="getNext" resultType="com.newlec.web.entities.Notice">
+		SELECT TOP 1 * FROM NOTICES WHERE CODE &lt; CAST(#{code} AS INT) ORDER BY REGDATE DESC
+	</select>
+	
+	<update id="hitUp">
+		UPDATE NOTICES SET HIT=HIT+1 WHERE CODE=#{code}
+	</update>
 </mapper>
